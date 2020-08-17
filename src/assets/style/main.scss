@@ -1,0 +1,84 @@
+.m-b-10 {margin-bottom: 10px !important;}
+.m-b-20 {margin-bottom: 20px !important;}
+
+.is-search-box {
+  .logo {margin-bottom: 30px;}
+  .is-search-header {
+    padding-top: 30px;
+    .logo {
+      width: 300px;
+      flex: none;
+      margin-right: 30px;
+      margin-bottom: 0;
+    }
+  }
+  .control.has-icons-right {
+    .input {
+      padding-right: 6rem;
+    }
+    .is-input-button.is-right {
+      width: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.3rem;
+    }
+  }
+  .list-search {
+    min-height: 600px;
+    text-align: left;
+    .global-filter {
+      .field {
+        .label {
+          margin: 0;
+        }
+        .label, .datepicker {
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+    }
+    .global-date {
+      span {
+        font-weight: 600;
+        &::after {
+          content: '|';
+          padding: 0 7px;
+        }
+        &:last-child::after {display: none;}
+      }
+    }
+    .active-case .title {color: hsl(22, 100%, 50%)}
+    .new-case .title {color: hsl(0, 0%, 48%);}
+    .new-death .title {color: hsl(348, 86%, 43%);}
+    .serious-critical .title {color: hsl(348, 86%, 43%);}
+    .total-cases .title {color: hsl(48, 100%, 29%);}
+    .total-death .title {color: hsl(348, 86%, 43%);}
+    .total-recovered .title {color: hsl(141, 53%, 31%);}
+    .card {
+      .card-content {
+        .title {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .is-empty {
+      height: 400px;
+      .empty-data {
+        text-align: center;
+      }
+    }
+    .b-table {min-height: 400px;}
+    .table {
+      tr {
+        td {
+          vertical-align: middle;
+          img {
+            vertical-align: middle;
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
+}
