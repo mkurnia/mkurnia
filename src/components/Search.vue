@@ -36,7 +36,7 @@
         <b-loading :is-full-page="true" :active.sync="loading" :can-cancel="false"></b-loading>
       </div>
       <div class="column is-full" v-else-if="!loading">
-        <b-table :data="listData" default-sort="country_name">
+        <b-table :data="listData" default-sort="country_name" :sticky-header="true" height="600">
           <template v-if="!loading && !listData.length" #empty>
             <div class="empty-data">
               <img src="~@/assets/no-data-found.png" alt="no data found" width="140" class="m-b-20">
@@ -104,7 +104,7 @@
       </div>
       <div class="column" v-else>kosong</div>
     </div>
-    <p>@MuhammadKurnia</p>
+    <p class="m-b-20">@MuhammadKurnia</p>
   </div>
 </template>
 
