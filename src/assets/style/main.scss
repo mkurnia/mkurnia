@@ -104,8 +104,31 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .is-search-box {
     .columns {margin-left: 0;}
+  }
+  .table-mobile-sort {
+    .has-addons {
+      .control {
+        .icon {
+          transform: rotate(-135deg);
+          -webkit-transform: rotate(-135deg);
+          &.is-desc {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+          }
+          .mdi-arrow-up {
+            &::after {
+              content: '';
+              border: solid #ffffff;
+              border-width: 0 3px 3px 0;
+              display: inline-block;
+              padding: 3px;
+            }
+          }
+        }
+      }
+    }
   }
 }
