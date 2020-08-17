@@ -71,6 +71,27 @@
     .b-table {min-height: 400px;}
     .table {
       tr {
+        th {
+          .th-wrap {
+            .icon {
+              transform: rotate(-135deg);
+              -webkit-transform: rotate(-135deg);
+              &.is-desc {
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+              }
+              .mdi-arrow-up {
+                &::after {
+                  content: '';
+                  border: solid black;
+                  border-width: 0 3px 3px 0;
+                  display: inline-block;
+                  padding: 3px;
+                }
+              }
+            }
+          }
+        }
         td {
           vertical-align: middle;
           img {
@@ -80,5 +101,11 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .is-search-box {
+    .columns {margin-left: 0;}
   }
 }

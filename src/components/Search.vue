@@ -1,11 +1,11 @@
 <template>
   <div class="container is-search-box is-list-search">
-    <div class="columns is-mobile">
+    <div class="columns">
       <div class="column is-search-header">
         <img alt="logo" src="~@/assets/logo-search.png" class="logo">
       </div>
     </div>
-    <div class="columns is-mobile list-search is-multiline">
+    <div class="columns list-search is-multiline">
       <div class="column is-full">
         <h1 class="is-size-3 m-b-10">Global Situation</h1>
         <div class="global-date">
@@ -36,7 +36,7 @@
         <b-loading :is-full-page="true" :active.sync="loading" :can-cancel="false"></b-loading>
       </div>
       <div class="column is-full" v-else-if="!loading">
-        <b-table :data="listData">
+        <b-table :data="listData" default-sort="country_name">
           <template v-if="!loading && !listData.length" #empty>
             <div class="empty-data">
               <img src="~@/assets/no-data-found.png" alt="no data found" width="140" class="m-b-20">
@@ -45,7 +45,7 @@
           </template>
 
           <template #default="props">
-            <b-table-column field="country_name" label="Country" width="190">
+            <b-table-column field="country_name" label="Country" width="250" sortable>
               <template #header="{ column }" >
                 {{column.label}}
               </template>
@@ -118,7 +118,6 @@ const RAPIDAPI_KEY = 'de7fba554emshfb9b74c9826879ep1cb6bcjsn41ac9441cbc4'
 export default {
   name: 'Search',
   data() {
-    const today = new Date()
     return {
       search: '',
       loading: false,
@@ -126,8 +125,6 @@ export default {
       latestData: {},
       listData: [],
       latestDateUpdate: '',
-      date: new Date(),
-      maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
     }
   },
   mounted() {
@@ -163,7 +160,7 @@ export default {
       .catch(err => {
         this.$buefy.notification.open({
           duration: 5000,
-          message: `please check your internet connection and try again`,
+          message: 'please check your internet connection and try again',
           position: 'is-bottom-right',
           type: 'is-danger',
           hasIcon: false
@@ -191,7 +188,7 @@ export default {
       .catch(err => {
         this.$buefy.notification.open({
           duration: 5000,
-          message: 'please check your internet connection and try again',
+          message: 'Country not available, please enter the correct country name',
           position: 'is-bottom-right',
           type: 'is-danger',
           hasIcon: false
@@ -204,9 +201,14 @@ export default {
     },
     goToSearch() {
       const searchValue = this.search;
-      const endpoint = '/latest_stat_by_country.php?country='
+      const endpointBySearch = '/latest_stat_by_country.php?country='
+      const endpointAll = '/cases_by_country.php'
 
-      this.getSearch(endpoint, searchValue);
+      if(searchValue) {
+        this.getSearch(endpointBySearch, searchValue);
+      } else {
+        this.getSearch(endpointAll, '');
+      }
     }
   }
 }
